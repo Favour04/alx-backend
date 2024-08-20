@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+pagination
+"""
+
 import csv
 import math
 from typing import List
@@ -19,16 +24,13 @@ class Server:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
             self.__dataset = dataset[1:]
-
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            assert isinstance(page, int) and  page > 0
-            assert isinstance(page_size, int) and page > 0
-            start, end = self.index_range(page, page_size)
-            print(start, end)
-            return self.dataset()[start: end]
-
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page > 0
+        start, end = self.index_range(page, page_size)
+        return self.dataset()[start: end]
 
     def index_range(self, page, page_size) -> (int, int):
-        return page_size * (page - 1), page_size * page 
+        return page_size * (page - 1), page_size * page
