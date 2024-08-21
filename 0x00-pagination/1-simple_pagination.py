@@ -14,6 +14,8 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """Init function
+        """
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -36,4 +38,7 @@ class Server:
         return self.dataset()[start: end]
 
     def index_range(self, page, page_size) -> (int, int):
+        """
+            returns the vailable index range
+        """
         return page_size * (page - 1), page_size * page

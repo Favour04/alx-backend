@@ -15,6 +15,8 @@ class Server:
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
+        """Init function
+        """
         self.__dataset = None
 
     def dataset(self) -> List[List]:
@@ -38,9 +40,15 @@ class Server:
         return self.dataset()[start: end]
 
     def index_range(self, page, page_size) -> (int, int):
+        """
+            Return availablr range of indexes
+        """
         return page_size * (page - 1), page_size * page
 
     def get_hyper(self, page: int = 1, page_size: int = 10):
+        """
+            Return page of given size
+        """
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page > 0
         total_page, rem = self.total_pages(page_size)
@@ -58,6 +66,9 @@ class Server:
                 'total_pages': total_page}
 
     def total_pages(self, page_size):
+        """
+            returns total pages based on calculation
+        """
         tln = len(self.dataset())
         if tln % page_size != 0:
             return int(tln / page_size) + 1, tln % page_size
@@ -65,6 +76,9 @@ class Server:
             return int(tln / page_size), 0
 
     def page_size(self, page_size, page_no):
+        """
+            Returns the current page size
+        """
         tlp, rem = self.total_pages(page_size)
         if page_no == tlp and rem > 0:
             return rem
