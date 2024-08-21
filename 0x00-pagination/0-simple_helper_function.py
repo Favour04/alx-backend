@@ -2,6 +2,8 @@
 """
     Simple function
 """
+
+
 def index_range(page, page_size):
     """
         Return page and page size
