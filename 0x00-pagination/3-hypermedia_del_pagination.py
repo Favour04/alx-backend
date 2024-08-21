@@ -2,7 +2,6 @@
 """
 Deletion-resilient hypermedia pagination
 """
-
 import csv
 import math
 from typing import List
@@ -30,7 +29,7 @@ class Server:
 
         return self.__dataset
 
-    def indexed_dataset(self) -> dict[int, List]:
+    def indexed_dataset(self):
         """Dataset indexed by sorting position, starting at 0
         """
         if self.__indexed_dataset is None:
